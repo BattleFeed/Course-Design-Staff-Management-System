@@ -1,0 +1,30 @@
+﻿<Window x:Class="PersonnelManagementSystem.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:PersonnelManagementSystem"
+        xmlns:localVM ="clr-namespace:PersonnelManagementSystem.ViewModels"
+        mc:Ignorable="d"
+        Title="登录" Width="800" Height="450" FontSize="28" Background="#EEE"
+        WindowStartupLocation="CenterScreen">
+    <i:Interaction.Behaviors>
+        <localVM:WindowBehavior Close="{Binding ToClose}"/>
+    </i:Interaction.Behaviors>
+    <StackPanel>
+        <TextBlock Text="人事管理系统" HorizontalAlignment="Center" Margin="30,50,0,0" FontSize="36"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,50,0,0">
+            <Image Source="../Images/user.png" Width="30" Height="30" Margin="10,0"/>
+            <TextBox Tag="请输入用户名" Width="240" Text="{Binding User.Username}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,50,0,0">
+            <Image Source="../Images/password.png" Width="36" Height="36" Margin="10,0"/>
+            <PasswordBox Width="240" localVM:PasswordBoxHelper.Attach="True"
+                localVM:PasswordBoxHelper.Password="{Binding User.Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+        <Button Background="#3366CC" HorizontalAlignment="Center" Width="200" Margin="0,40,0,0" Command="{Binding LoginCommand}">
+            <TextBlock Text="登录" Foreground="#EEE"/>
+        </Button>
+    </StackPanel>
+</Window>

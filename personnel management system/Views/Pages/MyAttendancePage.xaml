@@ -1,0 +1,23 @@
+﻿<Page x:Class="PersonnelManagementSystem.Views.Pages.MyAttendancePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignWidth="984" d:DesignHeight="720" 
+      Title="MyAttendancePage" Background="#EEE" FontSize="20">
+    <StackPanel x:Name="DataPanel" Margin="10 10 0 0">
+        <ScrollViewer  Width="900" Height="550" BorderBrush="Gray" >
+            <DataGrid x:Name="Grid" GridLinesVisibility="None" AutoGenerateColumns="False" IsReadOnly="True"
+                      ItemsSource="{Binding Table}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="员工编号" Binding="{Binding Path=StaffNo}"/>
+                    <DataGridTextColumn Header="日期" Binding="{Binding Path=Date}"/>
+                    <DataGridTextColumn Header="上班时间" Binding="{Binding Path=CheckInTime}"/>
+                    <DataGridTextColumn Header="下班时间" Binding="{Binding Path=LeaveTime}"/>
+                    <DataGridTextColumn Header="情况" Binding="{Binding Path=Status}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+    </StackPanel>
+</Page>

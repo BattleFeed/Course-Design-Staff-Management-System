@@ -1,0 +1,46 @@
+﻿<Window x:Class="PersonnelManagementSystem.Views.MainWindowLimited"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindowLimited" Width="1280" Height="720" Background="#EEE"
+        FontSize="20" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="Hyperlink">
+            <Setter Property="TextBlock.TextDecorations" Value="{x:Null}"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" x:Name="WelcomeInfo" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="欢迎," Margin="10,0,10,0"/>
+                <TextBlock x:Name="Username" Text="{Binding User.Username}" VerticalAlignment="Center"/>
+            </StackPanel>
+            <TreeView  Grid.Row="1" x:Name="ModulesTreeView" Background="#EEE">
+                <TreeViewItem Header="员工信息">
+                    <Hyperlink Click="MyStaffPage_Click">我的信息</Hyperlink>
+                </TreeViewItem>
+                <TreeViewItem Header="考勤信息">
+                    <Hyperlink Click="MyAttendancePage_Click">打卡记录</Hyperlink>
+                </TreeViewItem>
+                <TreeViewItem Header="考核信息">
+                    <Hyperlink Click="MyAssessPage_Click">我的考核</Hyperlink>
+                </TreeViewItem>
+                <TreeViewItem Header="培训信息">
+                    <Hyperlink Click="MyTrainPage_Click">我的培训</Hyperlink>
+                </TreeViewItem>
+            </TreeView>
+        </Grid>
+        <Frame x:Name="PageFrame" Grid.Column="1" Source="Pages\TemplatePage.xaml"  />
+    </Grid>
+</Window>
